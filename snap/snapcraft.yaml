@@ -1,0 +1,44 @@
+name: geth
+version: 'master'
+summary: Official Go implementation of the Ethereum protocol
+description: |
+
+grade: stable
+confinement: strict
+
+apps:
+  abigen:
+    command: bin/abigen
+  bootnode:
+    command: bin/bootnode
+    plugs: [network]
+  evm:
+    command: bin/evm
+  faucet:
+    command: bin/faucet
+  geth:
+    command: bin/geth
+    plugs: [network, network-bind]
+  puppeth:
+    command: bin/puppeth
+  rlpdump:
+    command: bin/rlpdump
+  swarm:
+    command: bin/swarm
+  wnode:
+    command: bin/wnode
+
+parts:
+  go17:
+    plugin: x-gobuild
+    build-packages: [golang-go]
+    source: https://go.googlesource.com/go
+    source-type: git
+    source-tag: go1.7.5
+    prime:
+      - -*
+  geth:
+    after: [go17]
+    plugin: go
+    source: .
+    go-importpath: github.com/ethereum/go-ethereum
