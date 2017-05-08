@@ -12,7 +12,7 @@ apps:
     command: bin/abigen
   bootnode:
     command: bin/bootnode
-    plugs: [network]
+    plugs: [network, network-bind]
   evm:
     command: bin/evm
   faucet:
@@ -22,12 +22,16 @@ apps:
     plugs: [network, network-bind]
   puppeth:
     command: bin/puppeth
+    plugs: [network]
   rlpdump:
     command: bin/rlpdump
+    plugs: [network]
   swarm:
     command: bin/swarm
+    plugs: [network]
   wnode:
     command: bin/wnode
+    plugs: [network, network-bind]
 
 parts:
   go17:
