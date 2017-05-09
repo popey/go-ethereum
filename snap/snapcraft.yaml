@@ -36,7 +36,7 @@ apps:
 parts:
   go17:
     plugin: x-gobuild
-    build-packages: [golang-go, rsync]
+    build-packages: [golang-go, rsync, gcc]
     source: https://go.googlesource.com/go
     source-type: git
     source-tag: go1.7.5
